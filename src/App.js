@@ -1,8 +1,8 @@
 import React from "react";
-import FriendCard from "./components/FriendCard";
+import MemoryTile from "./components/MemoryTile";
 import Wrapper from "./components/Wrapper";
 import Score from "./components/Score";
-import friends from "./friends.json";
+import tiles from "./tiles.json";
 import "./App.css";
 
 function shuffleCards(cards) {
@@ -19,43 +19,43 @@ function shuffleCards(cards) {
 
 class App extends React.Component {
   state = {
-    friends,
+    tiles,
     score: 0,
     message: "Click any tile to start!"
   };
 
   constructor() {
     super();
-    friends.forEach(friend => (friend.clicked = false));
+    tiles.forEach(friend => (friend.clicked = false));
   }
 
   clickHandler = friendid => {
-    let clickedTile = this.state.friends.find(friend => friend.id === friendid);
+    let clickedTile = this.state.tiles.find(friend => friend.id === friendid);
     if (clickedTile.clicked) {
       this.setState({ score: 0 });
       this.setState({ message: "Augh! You already clicked that one!!!" });
-      friends.forEach(friend => (friend.clicked = false));
+      tiles.forEach(friend => (friend.clicked = false));
     } else {
       clickedTile.clicked = true;
       let newScore = this.state.score + 1;
       this.setState({ score: newScore });
       this.setState({ message: "Whew! You have a good memory" });
     }
-    let shuffled = shuffleCards(this.state.friends);
-    this.setState({ friends: shuffled });
+    let shuffled = shuffleCards(this.state.tiles);
+    this.setState({ tiles: shuffled });
   };
 
   render() {
     return (
       <>
         <div className="top">
-          <h1 className="title">Memory Game</h1>
+          <h1 className="title">Star Trek Memory Game</h1>
           <Score score={this.state.score} message={this.state.message} />
         </div>
         <Wrapper>
-          {this.state.friends.map(friend => {
+          {this.state.tiles.map(friend => {
             return (
-              <FriendCard
+              <MemoryTile
                 image={friend.image}
                 key={friend.id}
                 id={friend.id}
