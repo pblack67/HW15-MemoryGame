@@ -2,7 +2,7 @@
 
 ## Application Deployed on GitHub Pages
 
-[https://pblack67.github.io/HW15-MemoryGame/](https://pblack67.github.io/HW15-MemoryGame/)
+[Star Trek Memory Game](https://pblack67.github.io/HW15-MemoryGame/)
 
 ## Video Demonstration
 
